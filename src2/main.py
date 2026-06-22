@@ -1,6 +1,6 @@
 import uvicorn
-from service2.src2.config import settings
-from service2.src2.application import get_app
+from src2.config import settings
+from src2.application import get_app
 
 app = get_app()
 

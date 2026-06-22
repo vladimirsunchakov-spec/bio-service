@@ -2,8 +2,8 @@ from typing import List, Optional
 from uuid import UUID
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
-from service2.src2.repositories.base import BaseRepository
-from service2.src2.models.author_bio import AuthorBio
+from src2.repositories.base import BaseRepository
+from src2.models.author_bio import AuthorBio
 
 class BioRepository(BaseRepository[AuthorBio]):
     def __init__(self, db: AsyncSession):

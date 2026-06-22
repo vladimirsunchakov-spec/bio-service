@@ -2,10 +2,10 @@ from contextlib import asynccontextmanager
 from fastapi import FastAPI
 from fastapi.responses import UJSONResponse
 from starlette.middleware.cors import CORSMiddleware
-from service2.src2.core.logger import setup_logging
-from service2.src2.middleware.request_id import RequestIdMiddleware
-from service2.src2.routers import bio
-from service2.src2.db import engine
+from src2.core.logger import setup_logging
+from src2.middleware.request_id import RequestIdMiddleware
+from src2.routers import bio
+from src2.db import engine
 
 @asynccontextmanager
 async def life_span(app: FastAPI):
