@@ -3,7 +3,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from uuid import UUID
 from typing import List
 from src2.services.bio_service import BioService
-from src2.schemas.author_bio import BioCreate, BioUpdate, BioResponse
+from src2.schemas.author_bio import BioCreate, BioResponse
 from src2.db import get_session
 from src2.exceptions import NotFoundError, ValidationError
 

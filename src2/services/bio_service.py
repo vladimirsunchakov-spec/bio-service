@@ -2,7 +2,7 @@ from uuid import UUID
 from typing import Optional, List
 from sqlalchemy.ext.asyncio import AsyncSession
 from src2.repositories.bio_repository import BioRepository
-from src2.schemas.author_bio import BioCreate, BioUpdate, BioResponse
+from src2.schemas.author_bio import BioCreate, BioResponse
 from src2.exceptions import NotFoundError, ValidationError
 from src2.core.logger import get_request_id
 from src2.services.base import BaseService
