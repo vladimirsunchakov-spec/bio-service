@@ -1,11 +1,13 @@
 from uuid import UUID
-from typing import Optional, List
 from sqlalchemy.ext.asyncio import AsyncSession
-from src2.repositories.bio_repository import BioRepository
-from src2.schemas.author_bio import BioCreate, BioResponse
-from src2.exceptions import NotFoundError, ValidationError
-from src2.core.logger import get_request_id
-from src2.services.base import BaseService
+from src.repositories.bio_repository import BioRepository
+from src.schemas.author_bio import BioCreate, BioResponse
+from src.exceptions import NotFoundError
+from src.middleware.request_id import get_request_id
+from src.services.base import BaseService
+import logging
+
+logger = logging.getLogger(__name__)
 
 class BioService(BaseService):
     def __init__(self, db: AsyncSession):
@@ -16,18 +18,9 @@ class BioService(BaseService):
     async def create_bio(self, data: BioCreate) -> BioResponse:
         self._log_info("Creating bio for author", author_id=str(data.author_id), request_id=self.request_id)
 
-        existing = await self.bio_repo.get_by_author_id(data.author_id)
-        if existing:
-            self._log_warning("Bio already exists for author", author_id=str(data.author_id), request_id=self.request_id)
-            raise ValidationError(f"Bio for author {data.author_id} already exists")
+        bio = await self.bio_repo.create(**data.model_dump())
+        await self.db.refresh(bio)
 
-        bio = await self.bio_repo.create(
-            author_id=data.author_id,
-            rating=data.rating,
-            awards_count=data.awards_count,
-            biography=data.biography,
-        )
-        self._log_info("Bio created", bio_id=str(bio.id), author_id=str(data.author_id), request_id=self.request_id)
         return BioResponse.model_validate(bio)
 
     async def get_bio_by_author_id(self, author_id: UUID) -> BioResponse:

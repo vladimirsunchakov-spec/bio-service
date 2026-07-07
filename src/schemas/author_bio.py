@@ -1,7 +1,7 @@
 from pydantic import BaseModel, Field, field_validator
 from uuid import UUID
 from typing import Optional
-from src2.exceptions import ValidationError
+from src.exceptions import ValidationError
 
 class BioCreate(BaseModel):
     author_id: UUID = Field(..., description="ID автора из основного списка")

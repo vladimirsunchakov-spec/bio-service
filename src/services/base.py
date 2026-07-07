@@ -1,6 +1,6 @@
 import logging
 from typing import Optional, Any, Dict
-from src2.core.logger import get_request_id
+from src.core.logger import get_request_id
 
 class BaseService:
     def __init__(self):

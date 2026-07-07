@@ -9,7 +9,7 @@ COPY pyproject.toml poetry.lock ./
 RUN poetry config virtualenvs.create false \
     && poetry install --no-root --no-interaction --no-ansi
 
-COPY src2/ ./src2/
+COPY src/ ./src2/
 
 EXPOSE 8001
 
