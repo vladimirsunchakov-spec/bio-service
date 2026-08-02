@@ -9,6 +9,12 @@ class BioRepository(BaseRepository[AuthorBio]):
     def __init__(self, db: AsyncSession):
         super().__init__(db, AuthorBio)
 
+    async def create_bio(self, bio: AuthorBio) -> AuthorBio:
+        self.db.add(bio)
+        await self.db.flush()
+        await self.db.refresh(bio)
+        return bio
+
     async def get_by_author_id(self, author_id: UUID) -> Optional[AuthorBio]:
         query = select(AuthorBio).where(
             AuthorBio.author_id == author_id,

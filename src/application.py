@@ -2,7 +2,7 @@ from contextlib import asynccontextmanager
 from fastapi import FastAPI
 from fastapi.responses import UJSONResponse
 from starlette.middleware.cors import CORSMiddleware
-from src.core.logger import setup_logging
+from src.logger import setup_logging
 from src.middleware.request_id import RequestIdMiddleware
 from src.routers import bio
 from src.db import engine
