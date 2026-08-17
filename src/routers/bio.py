@@ -4,7 +4,7 @@ from uuid import UUID
 from src.services.bio_service import BioService
 from src.schemas.author_bio import BioCreate, BioResponse
 from src.exceptions import NotFoundError
-from src.db import get_session
+from src.config import get_session
 import logging
 
 logger = logging.getLogger(__name__)

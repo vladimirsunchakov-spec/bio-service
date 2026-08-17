@@ -1,6 +1,6 @@
 import logging
 from typing import Any, Dict
-from src.logger import get_request_id
+
 
 class BaseService:
     def __init__(self):

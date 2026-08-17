@@ -1,13 +1,12 @@
 import uvicorn
-from src.config import settings
-from src.application import get_app
+from src.config import settings, get_app
 
 app = get_app()
 
 if __name__ == "__main__":
     uvicorn.run(
-        "service2.src.main:app",
-        host=settings.service2_host,
-        port=settings.service2_port,
-        reload=True
+        "src.main:app",
+        host="0.0.0.0",
+        port=settings.port if hasattr(settings, "port") else 8001,
+        reload=settings.debug
     )

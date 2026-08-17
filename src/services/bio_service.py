@@ -3,7 +3,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from src.repositories.bio_repository import BioRepository
 from src.schemas.author_bio import BioCreate, BioResponse
 from src.exceptions import NotFoundError
-from src.middleware.request_id import get_request_id
+from src.config import get_request_id
 import logging
 
 logger = logging.getLogger(__name__)
