@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+ bio-service:
+    build: .
+    container_name: bio-service
+    ports:
+      - "8001:8001"
+    environment:
+      - DATABASE_URL=sqlite+aiosqlite:///./app/service2.db
+    volumes:
+      - .:/app
+    restart: unless-stopped
