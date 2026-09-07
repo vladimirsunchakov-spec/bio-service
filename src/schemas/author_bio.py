@@ -33,4 +33,6 @@ class BioResponse(BaseModel):
     class Config:
         from_attributes = True
 
+class BioStatusUpdate(BaseModel):
+    status: str
 
